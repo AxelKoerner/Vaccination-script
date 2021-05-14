@@ -22,13 +22,21 @@ def selectBundesland():
   ddBundesland.send_keys(Keys.RETURN)                                                                   #start drop Down List
   ddBundesland.send_keys(Keys.RETURN)                                                                   #choose Baden Württemberg
 
+
 def submitEntries():
   submit = browser.find_element_by_class_name("btn.kv-btn.btn-magenta.text-uppercase.d-inline-block")
   submit.send_keys(Keys.RETURN)
   time.sleep(2)
-  anspruchPruefen = browser.find_elements_by_class_name("ets-radio-control")[1]
-  anspruchPruefen.click()  
+
+  anspruchPruefen = browser.find_elements_by_xpath("/html/body/app-root/div/app-page-its-login/div/div/div[2]/app-its-login-user/div/div/app-corona-vaccination/div[2]/div/div/label[2]")
+  if len(anspruchPruefen) > 0:                                                                           #checks if we are on the digital waiting room, if not we proceed to check for an appointment
+    anspruchPruefen[0].click()
+    keinErfolg = browser.find_elements_by_xpath("/html/body/app-root/div/app-page-its-login/div/div/div[2]/app-its-login-user/div/div/app-corona-vaccination/div[3]/div/div/div/div[2]/div/div/div")
+    time.sleep(4)
+    if len(keinErfolg) == 0:
+       time.sleep(5000)
   
+
 def waiblingen():
   impfzentrum = browser.find_elements_by_class_name("select2-selection.select2-selection--single")[1]    #select drop down element for vaccine centre 
   impfzentrum.send_keys(Keys.RETURN)
@@ -38,6 +46,7 @@ def waiblingen():
     i += 1
   impfzentrum.send_keys(Keys.RETURN)
   time.sleep(1)
+
 
 def stuttgartKlinikum():
   impfzentrum = browser.find_elements_by_class_name("select2-selection.select2-selection--single")[1]    #select drop down element for vaccine centre 
@@ -49,6 +58,7 @@ def stuttgartKlinikum():
   impfzentrum.send_keys(Keys.RETURN)
   time.sleep(1)  
 
+
 def stuttgartRobertBosch():
   impfzentrum = browser.find_elements_by_class_name("select2-selection.select2-selection--single")[1]    #select drop down element for vaccine centre 
   impfzentrum.send_keys(Keys.RETURN)
@@ -58,6 +68,7 @@ def stuttgartRobertBosch():
     i += 1
   impfzentrum.send_keys(Keys.RETURN)
   time.sleep(1)
+
 
 def ludwigsburg():
   impfzentrum = browser.find_elements_by_class_name("select2-selection.select2-selection--single")[1]    #select drop down element for vaccine centre 
@@ -69,6 +80,7 @@ def ludwigsburg():
   impfzentrum.send_keys(Keys.RETURN)
   time.sleep(1)
 
+
 def ilsfeld():
   impfzentrum = browser.find_elements_by_class_name("select2-selection.select2-selection--single")[1]    #select drop down element for vaccine centre 
   impfzentrum.send_keys(Keys.RETURN)
@@ -78,6 +90,7 @@ def ilsfeld():
     i += 1
   impfzentrum.send_keys(Keys.RETURN)
   time.sleep(1)
+
 
 def rotAmSee():
   impfzentrum = browser.find_elements_by_class_name("select2-selection.select2-selection--single")[1]    #select drop down element for vaccine centre 
@@ -97,31 +110,18 @@ while True:
   selectBundesland()
   waiblingen()
   submitEntries()
-  keinErfolg = browser.find_element_by_xpath("/html/body/app-root/div/app-page-its-login/div/div/div[2]/app-its-login-user/div/div/app-corona-vaccination/div[3]/div/div/div/div[2]/div/div/div")
-  time.sleep(5)
-  if keinErfolg == False:
-      break
+ 
 
   selectBundesland()
   ludwigsburg()
   submitEntries()
-  keinErfolg = browser.find_element_by_xpath("/html/body/app-root/div/app-page-its-login/div/div/div[2]/app-its-login-user/div/div/app-corona-vaccination/div[3]/div/div/div/div[2]/div/div/div")
-  time.sleep(5)
-  if keinErfolg == False:
-      break
+ 
   
   selectBundesland()
   ilsfeld()
   submitEntries()
-  keinErfolg = browser.find_element_by_xpath("/html/body/app-root/div/app-page-its-login/div/div/div[2]/app-its-login-user/div/div/app-corona-vaccination/div[3]/div/div/div/div[2]/div/div/div")
-  time.sleep(5)
-  if keinErfolg == False:
-      break
-
+  
   selectBundesland()
   rotAmSee()
   submitEntries()
-  keinErfolg = browser.find_element_by_xpath("/html/body/app-root/div/app-page-its-login/div/div/div[2]/app-its-login-user/div/div/app-corona-vaccination/div[3]/div/div/div/div[2]/div/div/div")
-  time.sleep(5)
-  if keinErfolg == False:
-      break
+ 
