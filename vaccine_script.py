@@ -12,7 +12,7 @@ browser = webdriver.Firefox(options=options, executable_path=r'C:\Users\axel_\Ap
 
 
 
-##################################define different functions for setting Bundesland and place to be vaccinated ####################################
+#######################################define different functions for setting Bundesland and place to be vaccinated #################################################
 
 
 def selectBundesland():
@@ -34,7 +34,8 @@ def submitEntries():
     keinErfolg = browser.find_elements_by_xpath("/html/body/app-root/div/app-page-its-login/div/div/div[2]/app-its-login-user/div/div/app-corona-vaccination/div[3]/div/div/div/div[2]/div/div/div")
     time.sleep(4)
     if len(keinErfolg) == 0:
-       time.sleep(5000)
+       print("Found a Code for vaccination appointment")
+       time.sleep(7200)    #sleep for 2h if appointment is found
   
 
 def waiblingen():
