@@ -7,8 +7,8 @@ from selenium.webdriver.support.select import Select
 import time 
 
 options = Options()
-options.binary_location = r"C:\Users\axel_\AppData\Local\Mozilla Firefox\firefox.exe"
-browser = webdriver.Firefox(options=options, executable_path=r'C:\Users\axel_\AppData\Local\Mozilla Firefox\geckodriver.exe')
+options.binary_location = r"---Your binary location here----\firefox.exe"
+browser = webdriver.Firefox(options=options, executable_path=r'---Your binary location here---\geckodriver.exe')
 
 
 
